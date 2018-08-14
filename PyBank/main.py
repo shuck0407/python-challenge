@@ -77,7 +77,8 @@ with open(budget_csv, 'r') as csvfile:
 
     #Open a text file for writing
     f = open('pybank_profit_results.txt','w')
-    f.write("Pybank Profit Results" + "\n")
+    f.write("Pybank Financial Analysis" + "\n")
+    f.write("---------------------------------------------------" + "\n")
   
     print("Total Months: " + str(periods))
     f.write("Total Months: " + str(periods) + "\n")
