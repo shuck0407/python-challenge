@@ -2,8 +2,6 @@ import os
 import csv
 import operator 
 
-
-
 profit_list = []
 profit_period = []
 change_list = []
@@ -49,6 +47,13 @@ def total_calcs():
 
     avg_change = (last_number - first_number) / (periods - 1)
 
+def number_format(number_parm):
+
+    pretty_number = '${:,.2f}'.format(number_parm)
+    return pretty_number
+
+
+
        
 # Path to collect data from the Budget_data csv file
 budget_csv = os.path.join('..', 'budget_data.csv')
@@ -73,11 +78,13 @@ with open(budget_csv, 'r') as csvfile:
     print("Total Months: " + str(periods))
     print(" ")
 
-    formatted_profit = '${:,.2f}'.format(total_profit)
-    print("Total: " + formatted_profit)
-    
-    formatted_average = '${:,.2f}'.format(avg_change)
+    formatted_profit = number_format(total_profit)
+    print("Total Profit: " + formatted_profit)
+    print(" ")
+
+    formatted_average = number_format(avg_change)
     print("Average Change: " + formatted_average)
+    print(" ")
 
      #zip up the periods and changes
     change_list = list(zip(profit_period, profit_list))
@@ -86,10 +93,11 @@ with open(budget_csv, 'r') as csvfile:
     max_profit_change = max(change_list, key=operator.itemgetter(1))
     min_profit_change = min(change_list, key=operator.itemgetter(1))
 
-    formatted_max = '${:,.2f}'.format(max_profit_change[1])
+    formatted_max = number_format(max_profit_change[1])
     print("Greatest Increase in Profits: "+ max_profit_change[0] + " " + formatted_max)
+    print(" ")
 
-    formatted_min = '${:,.2f}'.format(min_profit_change[1])
+    formatted_min = number_format(min_profit_change[1])
     print("Greatest Decrease in Profits: "+ min_profit_change[0] + " " + formatted_min)
 
 
