@@ -75,14 +75,21 @@ with open(budget_csv, 'r') as csvfile:
     #Get the total Profits/Losses
     total_calcs()
 
+    #Open a text file for writing
+    f = open('pybank_profit_results.txt','w')
+    f.write("Pybank Profit Results" + "\n")
+  
     print("Total Months: " + str(periods))
+    f.write("Total Months: " + str(periods) + "\n")
     print(" ")
 
     formatted_profit = number_format(total_profit)
+    f.write("Total Profit: " + formatted_profit + "\n")
     print("Total Profit: " + formatted_profit)
     print(" ")
 
     formatted_average = number_format(avg_change)
+    f.write("Average Change: " + formatted_average + "\n")
     print("Average Change: " + formatted_average)
     print(" ")
 
@@ -96,9 +103,19 @@ with open(budget_csv, 'r') as csvfile:
     formatted_max = number_format(max_profit_change[1])
     print("Greatest Increase in Profits: "+ max_profit_change[0] + " " + formatted_max)
     print(" ")
+    f.write("Greatest Increase in Profits: " + max_profit_change[0] + " " + formatted_max + "\n")
 
     formatted_min = number_format(min_profit_change[1])
     print("Greatest Decrease in Profits: "+ min_profit_change[0] + " " + formatted_min)
+    f.write("Greatest Decrease in Profits: "+ min_profit_change[0] + " " + formatted_min)
+
+    f.close()
+
+   
+
+
+
+
 
 
     
